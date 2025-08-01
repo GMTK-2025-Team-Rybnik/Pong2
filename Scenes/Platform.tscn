@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://0tg2gdeu6vdm"]
+
+[ext_resource type="Texture2D" uid="uid://dh6jlv1dx82bg" path="res://Assess/Godot Test/Gemmed Platforms.png" id="1_pquxj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pquxj"]
+texture = ExtResource("1_pquxj")
+margins = Vector2i(4, 0)
+texture_region_size = Vector2i(18, 16)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8n7cf"]
+sources/0 = SubResource("TileSetAtlasSource_pquxj")
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pquxj"]
+a = Vector2(-17, 0)
+b = Vector2(17, 0)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_8n7cf")
+format = 2
+layer_0/tile_data = PackedInt32Array(65535, 0, 0, 0, 65536, 0)
+
+[node name="RigidBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 4)
+shape = SubResource("SegmentShape2D_pquxj")
+one_way_collision = true

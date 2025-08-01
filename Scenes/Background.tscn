@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy3ohdee7h0vb"]
+
+[ext_resource type="Texture2D" uid="uid://bi6mqhdhji1p2" path="res://Assess/Godot Test/Background.jpg" id="1_c8m3x"]
+
+[node name="Node2D" type="Sprite2D"]
+scale = Vector2(4.229, 2.221)
+texture = ExtResource("1_c8m3x")

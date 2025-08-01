@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5kxblypslpxp"]
+
+[ext_resource type="Texture2D" uid="uid://dd5woeicq45e7" path="res://Assess/Godot Test/paddle.png" id="1_8wypp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wypp"]
+size = Vector2(20, 118)
+
+[node name="Paddle" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.54511e-06, -2.16885)
+rotation = 1.5708
+scale = Vector2(0.460898, 0.321987)
+texture = ExtResource("1_8wypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_8wypp")

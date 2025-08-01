@@ -1,0 +1,138 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3urf1tasb2uv"]
+
+[ext_resource type="Script" uid="uid://d1wy61vb1gbhs" path="res://Scripts/MainMenu.cs" id="1_853f1"]
+[ext_resource type="AudioStream" uid="uid://bgxheret6du3c" path="res://Assess/SFX/bucket-hit-89027.mp3" id="2_8saeu"]
+
+[node name="MainMenu" type="Node2D"]
+position = Vector2(80, 4)
+script = ExtResource("1_853f1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 154.0
+offset_top = -1.0
+offset_right = 980.0
+offset_bottom = 366.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Pong 2"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 153.0
+offset_top = 126.0
+offset_right = 979.0
+offset_bottom = 493.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "with such innovative game mechanics"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = 106.0
+offset_top = 190.0
+offset_right = 1015.0
+offset_bottom = 710.0
+
+[node name="MainButtons" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Play game"
+
+[node name="Settings" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+
+[node name="Credits" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+
+[node name="Bucket" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Bucket"
+
+[node name="BucketSound" type="AudioStreamPlayer2D" parent="CenterContainer/MainButtons/Bucket"]
+stream = ExtResource("2_8saeu")
+
+[node name="Quit" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit
+"
+
+[node name="Credits" type="VBoxContainer" parent="CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Credits"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "This game was made by a random dude LOL
+Assets used:
+=OpenGameArt.Org:
+-Gemmed Platforms by ColorOptimist
+- Paddle and ball by Aj_
+=DreamSite.com
+-Ping pong vector stock vector by AGfoto (ID 151505380)
+SFX: Bucket hit by freesound_community on Pixabay.com
+Music: Lofi Chill by DELOSound on Pixabay.com
+Font: PixelOperator8 from Brackeys' Platformer Bundle
+InGame SFX from Brackeys' Platformer Bundle"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="CenterContainer/Credits"]
+custom_minimum_size = Vector2(200, 6)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 1.86
+theme_override_font_sizes/font_size = 40
+text = "Back"
+icon_alignment = 1
+
+[node name="Settings" type="VBoxContainer" parent="CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Settings"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "You want the truth? You want the freaking truth?
+I added no way to change the settings! I LIED!
+But I will say left player must use A W and D to move
+and right player must use left, up and right arrows"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="CenterContainer/Settings"]
+custom_minimum_size = Vector2(200, 6)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 1.86
+theme_override_font_sizes/font_size = 40
+text = "Back"
+icon_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -4096
+offset_left = -1879.0
+offset_top = -1576.0
+offset_right = 2952.0
+offset_bottom = 1910.0
+mouse_filter = 2
+color = Color(0.0671469, 0.576706, 0.817849, 1)
+
+[connection signal="pressed" from="CenterContainer/MainButtons/Play" to="." method="OnPlayPressed"]
+[connection signal="pressed" from="CenterContainer/MainButtons/Settings" to="." method="OnSettingsPressed"]
+[connection signal="pressed" from="CenterContainer/MainButtons/Credits" to="." method="OnCreditsPressed"]
+[connection signal="pressed" from="CenterContainer/MainButtons/Bucket" to="." method="OnBucketPressed"]
+[connection signal="pressed" from="CenterContainer/MainButtons/Quit" to="." method="OnQuitPressed"]
+[connection signal="pressed" from="CenterContainer/Credits/Back" to="." method="OnBackPressed"]
+[connection signal="pressed" from="CenterContainer/Settings/Back" to="." method="OnBackPressed"]

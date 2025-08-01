@@ -1,0 +1,187 @@
+[gd_scene load_steps=15 format=3 uid="uid://brtdfxaratw4g"]
+
+[ext_resource type="PackedScene" uid="uid://b5kxblypslpxp" path="res://Scenes/Paddle.tscn" id="1_gl6un"]
+[ext_resource type="FontFile" uid="uid://dauvyhmmwvo4n" path="res://Assess/fonts/PixelOperator8-Bold.ttf" id="2_bf53h"]
+[ext_resource type="PackedScene" uid="uid://dy3ohdee7h0vb" path="res://Scenes/Background.tscn" id="2_j5yw3"]
+[ext_resource type="Script" uid="uid://bsiu5chrv0t7r" path="res://Scripts/GameManager.cs" id="3_bf53h"]
+[ext_resource type="PackedScene" uid="uid://0tg2gdeu6vdm" path="res://Scenes/Platform.tscn" id="4_b2bpf"]
+[ext_resource type="Script" uid="uid://b11s254g0lj1b" path="res://Scripts/RightPaddle.cs" id="4_fgofq"]
+[ext_resource type="Script" uid="uid://i48u1obar2rg" path="res://Scripts/LeftPaddle.cs" id="5_2irst"]
+[ext_resource type="PackedScene" uid="uid://br508tfpjtmci" path="res://Scenes/ball.tscn" id="5_bf53h"]
+[ext_resource type="FontFile" uid="uid://dpv4g1isb4sri" path="res://Assess/fonts/PixelOperator8.ttf" id="5_fgofq"]
+[ext_resource type="AudioStream" uid="uid://bdfdqitgnnehq" path="res://Assess/Music/lofi-chill-374877.mp3" id="6_dahhg"]
+[ext_resource type="AudioStream" uid="uid://bowf04qmsn2jy" path="res://Assess/SFX/BigScore.wav" id="7_3so38"]
+[ext_resource type="AudioStream" uid="uid://b1x7tt78xsv7t" path="res://Assess/SFX/Score.wav" id="10_71axn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgofq"]
+size = Vector2(1125, 171)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bf53h"]
+size = Vector2(1123, 171)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("2_j5yw3")]
+position = Vector2(-5, -2)
+
+[node name="Label" type="Label" parent="Background"]
+offset_left = -78.0
+offset_top = -105.0
+offset_right = -43.0
+offset_bottom = -92.0
+theme_override_fonts/font = ExtResource("2_bf53h")
+theme_override_font_sizes/font_size = 8
+text = "Epic background, dude"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-5, -2)
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_bf53h")
+
+[node name="RightScore" type="Label" parent="GameManager"]
+offset_left = 192.0
+offset_top = -182.0
+offset_right = 213.0
+offset_bottom = -158.0
+theme_override_fonts/font = ExtResource("5_fgofq")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="LeftScore" type="Label" parent="GameManager"]
+offset_left = -226.0
+offset_top = -181.0
+offset_right = -201.0
+offset_bottom = -157.0
+theme_override_fonts/font = ExtResource("5_fgofq")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Scored" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("10_71axn")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("6_dahhg")
+autoplay = true
+parameters/looping = true
+
+[node name="BigScore" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("7_3so38")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(-2, 181)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(18.5, 86.5)
+shape = SubResource("RectangleShape2D_fgofq")
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(13.4999, -269.5)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_bf53h")
+
+[node name="LeftPlatforms" type="Node" parent="."]
+
+[node name="Platform" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-385, 105)
+
+[node name="Platform5" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-435, 51)
+
+[node name="Platform4" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-335, 51)
+
+[node name="Platform6" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-235, 51)
+
+[node name="Platform2" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-290, 105)
+
+[node name="Platform3" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-480, 105)
+
+[node name="Platform8" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-385, -4)
+
+[node name="Platform9" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-435, -58)
+
+[node name="Platform11" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-335, -58)
+
+[node name="Platform12" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-235, -58)
+
+[node name="Platform13" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-290, -4)
+
+[node name="Platform14" parent="LeftPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(-478, -4)
+
+[node name="RightPlatforms" type="Node" parent="."]
+
+[node name="Platform" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(396, 105)
+
+[node name="Platform5" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(236, 51)
+
+[node name="Platform4" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(346, 52)
+
+[node name="Platform6" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(446, 52)
+
+[node name="Platform2" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(491, 105)
+
+[node name="Platform3" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(301, 105)
+
+[node name="Platform8" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(396, -4)
+
+[node name="Platform9" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(236, -58)
+
+[node name="Platform11" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(346, -57)
+
+[node name="Platform12" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(446, -57)
+
+[node name="Platform13" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(491, -4)
+
+[node name="Platform14" parent="RightPlatforms" instance=ExtResource("4_b2bpf")]
+position = Vector2(301, -4)
+
+[node name="Ball" parent="." instance=ExtResource("5_bf53h")]
+position = Vector2(323, 76)
+collision_layer = 2
+collision_mask = 2
+
+[node name="RightPaddle" parent="." instance=ExtResource("1_gl6un")]
+top_level = true
+light_mask = 2
+visibility_layer = 2
+position = Vector2(495, 113)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_fgofq")
+
+[node name="LeftPaddle" parent="." instance=ExtResource("1_gl6un")]
+top_level = true
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-494, 75)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("5_2irst")
